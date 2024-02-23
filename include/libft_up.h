@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 14:10:27 by Laubry            #+#    #+#             */
-/*   Updated: 2024/02/19 14:10:30 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/02/22 23:54:36 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -583,5 +583,7 @@ void			ft_freestr(char **lst);
  * @param lst the list who are free
  */
 void			ft_free_llist(t_list **lst);
+
+
 
 #endif

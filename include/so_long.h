@@ -18,4 +18,8 @@ typedef struct s_game
 	struct s_game	*next;
 }					t_game;
 
+//inisialisation;
+void	init_map(t_game *game);
+
+
 #endif

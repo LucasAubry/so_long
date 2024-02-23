@@ -1,8 +1,8 @@
 CC =		cc
 CFLAGS	=	-Wall -Wextra -Werror -Iinclude -g -O0
 
-LIB = include/libft_up.a
-MLX = include/libmlx42.a
+LIB = lib/libft.a
+MLX = lib/libmlx42.a
 LFLAGS = -Llib -lft -ldl -lglfw -pthread
 
 FILES = main \
@@ -20,7 +20,7 @@ $(NAME): $(LIB) $(MLX) $(OBJS)
 		$(CC) $(CFLAGS) -o $@ $(OBJS) $(LFLAGS) $(LIB) $(MLX)
 
 $(LIB):
-	make -C lib
+	make -C lib/Libft
 $(MLX):
 	make -C MLX42/build
 
@@ -34,7 +34,7 @@ clean:
 
 fclean:	clean
 		rm -f $(NAME)
-		make fclean -C lib
+		make fclean -C lib/Libft
 		make clean -C MLX42/build
 
 re:	fclean all

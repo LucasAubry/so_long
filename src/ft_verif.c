@@ -1,32 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_verif.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 12:32:05 by Laubry            #+#    #+#             */
-/*   Updated: 2024/02/22 23:55:37 by Laubry           ###   ########.fr       */
+/*   Created: 2024/02/22 23:23:31 by Laubry            #+#    #+#             */
+/*   Updated: 2024/02/23 01:28:28 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
 #include "so_long.h"
 
+int ft_verif(t_game *game)
+{
+	if (!size_map(game))
+	{
+		ft_printf("Error : Ligne de taille differante\n");
+		return (0);
+	}
+}
 
-// void texture(mlx_t* mlx)
-// {
-// 	int i = 0;
-// }
 
-int main(void){
-	mlx_t	*mlx;
-	t_game *game;
-	game = NULL;
+int size_map(t_game *game)
+{
+	int i;
+	int j;
+	int temp;
 
-	mlx = mlx_init(500,500,"so_long",true);
-	//texture(mlx);
-	init_map(game);
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
+	i = 0;
+	j = 0;
+	temp = 0;
+	while(game->map[i])
+	{
+		
+		i++;
+	}
+	while (game->map[i])
+	{
+		while(game->map[i][j])
+			j++;
+		if(temp != j)
+			return(0);
+		temp = j;
+		j = 0;
+		i++;
+	}
+	
+	return(1);
 }
