@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 23:23:31 by Laubry            #+#    #+#             */
-/*   Updated: 2024/02/23 01:28:28 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/02/23 12:22:03 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int ft_verif(t_game *game)
 		return (0);
 	}
 }
-
 
 int size_map(t_game *game)
 {

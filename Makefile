@@ -16,11 +16,12 @@ NAME = so_long
 .c.o:
 		$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-$(NAME): $(LIB) $(MLX) $(OBJS)
+$(NAME): $(LIB) $(OBJS)
 		$(CC) $(CFLAGS) -o $@ $(OBJS) $(LFLAGS) $(LIB) $(MLX)
 
 $(LIB):
 	make -C lib/Libft
+	cp lib/Libft/libft.a lib/
 $(MLX):
 	make -C MLX42/build
 
@@ -34,8 +35,8 @@ clean:
 
 fclean:	clean
 		rm -f $(NAME)
+		rm -f lib/libft.a
 		make fclean -C lib/Libft
-		make clean -C MLX42/build
 
 re:	fclean all
 
