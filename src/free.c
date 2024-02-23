@@ -6,13 +6,13 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 23:33:06 by Laubry            #+#    #+#             */
-/*   Updated: 2024/02/22 23:41:04 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/02/23 14:50:11 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void free_all(t_game *game)
+void	free_all(t_game *game)
 {
 	int i;
 

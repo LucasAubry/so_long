@@ -7,6 +7,10 @@ LFLAGS = -Llib -lft -ldl -lglfw -pthread
 
 FILES = main \
 		map \
+		data \
+		free \
+		verif \
+		utils \
 
 SRCS = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix obj/, $(addsuffix .o, $(FILES)))

@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:32:05 by Laubry            #+#    #+#             */
-/*   Updated: 2024/02/22 23:55:37 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/02/23 15:29:11 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,24 @@
 // 	int i = 0;
 // }
 
-int main(void){
-	mlx_t	*mlx;
+int main(void)
+{
+	// mlx_t	*mlx;
 	t_game *game;
-	game = NULL;
+	game = malloc(sizeof(t_game));
 
-	mlx = mlx_init(500,500,"so_long",true);
+	// mlx = mlx_init(500,500,"so_long",true);
 	//texture(mlx);
-	init_map(game);
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
+	if (!init_map(game))
+	{
+		free_all(game);
+		return(0);
+	}
+	if (!verif_map(game))
+	{
+		free_all(game);
+		return(0);
+	}
+	// mlx_loop(mlx);
+	// mlx_terminate(mlx);
 }
