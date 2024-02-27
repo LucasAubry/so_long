@@ -9,8 +9,10 @@ FILES = main \
 		map \
 		data \
 		free \
-		verif \
 		utils \
+		verif/verif \
+		verif/verif_2 \
+		set_texture
 
 SRCS = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix obj/, $(addsuffix .o, $(FILES)))

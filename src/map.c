@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:32:07 by Laubry            #+#    #+#             */
-/*   Updated: 2024/02/23 17:06:25 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/02/27 13:41:11 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,16 @@ int	map_in_tab(t_game *game)
 	char *temp;
 
 	i = 0;
-	fd = open("maps/maps.ber", O_RDONLY);
+	fd = open("asset/maps/maps.ber", O_RDONLY);
 	if (!check_perror(fd))
 		return (0);
-	while(i < game->size_y) {
+	while(i < game->size_y)
+	{
 		temp = get_next_line(fd);
 		game->map[i++] = ft_strtrim(temp, "\n");
 		free(temp);
 	}
+	game->map[i] = NULL;
 	close(fd);
 	return(1);
 }
@@ -50,7 +52,7 @@ int	init_map(t_game *game)
 	fd = 0;
 	set_size_y(game);
 	game->map = malloc(sizeof(char *) * game->size_y);
-	fd = open("maps/maps.ber", O_RDONLY);
+	fd = open("asset/maps/maps.ber", O_RDONLY);
 	if (!check_perror(fd))
 		return (0);
 	if (!map_in_tab(game))
