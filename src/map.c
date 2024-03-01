@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:32:07 by Laubry            #+#    #+#             */
-/*   Updated: 2024/02/27 13:41:11 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/01 17:59:48 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	init_map(t_game *game)
 
 	fd = 0;
 	set_size_y(game);
-	game->map = malloc(sizeof(char *) * game->size_y);
+	game->map = malloc(sizeof(char *) * (game->size_y + 1));
 	fd = open("asset/maps/maps.ber", O_RDONLY);
 	if (!check_perror(fd))
 		return (0);

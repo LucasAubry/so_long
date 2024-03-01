@@ -12,7 +12,9 @@ FILES = main \
 		utils \
 		verif/verif \
 		verif/verif_2 \
-		set_texture
+		set_texture/set_floor \
+		set_texture/set_texture \
+		player
 
 SRCS = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix obj/, $(addsuffix .o, $(FILES)))

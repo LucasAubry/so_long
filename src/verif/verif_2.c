@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:03:12 by Laubry            #+#    #+#             */
-/*   Updated: 2024/02/26 23:27:38 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/01 03:13:01 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,3 +86,4 @@ int wall_left_right(t_game *game)
 	}
 	return(1);
 }
+//verif si tout les collectible sont ategniable
