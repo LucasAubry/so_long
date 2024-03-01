@@ -14,7 +14,9 @@ FILES = main \
 		verif/verif_2 \
 		set_texture/set_floor \
 		set_texture/set_texture \
-		player
+		mouve/mouve \
+		mouve/player \
+		item
 
 SRCS = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix obj/, $(addsuffix .o, $(FILES)))

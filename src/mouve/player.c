@@ -6,47 +6,27 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:59:19 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/01 18:10:55 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/01 20:29:07 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	where_is_wall(t_game *game, char c)
+int	where_is(t_game *game, char c, char z)
 {
 	int x;
 	int y;
 
-	x = 0;
-	y = 0;
-	if (c == 'U')
-	{
-		x = game->image_character_right->instances[0].x /32;
-		y = game->image_character_right->instances[0].y /32;
-		if (game->map[y-1][x] == '1')
+	x = game->image_character_right->instances[0].x /32;
+	y = game->image_character_right->instances[0].y /32;
+	if (c == 'U' && !ft_up(game, x, y, z))
 			return(0);
-	}
-	else if (c == 'D')
-	{
-		x = game->image_character_right->instances[0].x /32;
-		y = game->image_character_right->instances[0].y /32;
-		if (game->map[y+1][x] == '1')
+	else if (c == 'D' && !ft_down(game, x, y, z))
 			return(0);
-	}
-	else if (c == 'L')
-	{
-		x = game->image_character_right->instances[0].x /32;
-		y = game->image_character_right->instances[0].y /32;
-		if (game->map[y][x-1] == '1')
+	else if (c == 'L' && !ft_left(game, x, y, z))
 			return(0);
-	}
-	else if (c == 'R')
-	{
-		x = game->image_character_right->instances[0].x /32;
-		y = game->image_character_right->instances[0].y /32;
-		if (game->map[y][x+1] == '1')
+	else if (c == 'R' && !ft_right(game, x, y, z))
 			return(0);
-	}
 	return (1);
 }
 
@@ -54,14 +34,14 @@ void up_key(t_game *game)
 {
 	game->image_character_left->instances[0].y -=32;
 	game->image_character_right->instances[0].y -=32;
-	game->place_character[1] = game->image_character_right->instances[0].y;
+	game->mouve +=1;
 }
 
 void down_key(t_game *game)
 {
 	game->image_character_left->instances[0].y +=32;
 	game->image_character_right->instances[0].y +=32;
-	game->place_character[1] = game->image_character_right->instances[0].y;
+	game->mouve +=1;
 }
 
 void left_key(t_game *game)
@@ -70,7 +50,7 @@ void left_key(t_game *game)
 	game->image_character_right->instances[0].x -=32;
 	mlx_set_instance_depth(&game->image_character_right->instances[0], CHARACTER - 10);
 	mlx_set_instance_depth(&game->image_character_left->instances[0], CHARACTER + 10);
-	game->place_character[2] = game->image_character_right->instances[0].x;
+	game->mouve +=1;
 }
 
 void right_key(t_game *game)
@@ -79,7 +59,7 @@ void right_key(t_game *game)
 	mlx_set_instance_depth(&game->image_character_left->instances[0], CHARACTER - 10);
 	game->image_character_left->instances[0].x +=32;
 	game->image_character_right->instances[0].x +=32;
-	game->place_character[2] = game->image_character_right->instances[0].x;
+	game->mouve +=1;
 }
 
 void	set_key(void *param)
@@ -95,18 +75,18 @@ void	set_key(void *param)
 		mlx_close_window(game->mlx);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_UP)
 		|| mlx_is_key_down(game->mlx, MLX_KEY_W))
-		if (where_is_wall(game, 'U'))
+		if (where_is(game, 'U', '1'))
 			up_key(game);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_DOWN)
 		|| mlx_is_key_down(game->mlx, MLX_KEY_S))
-		if (where_is_wall(game, 'D'))
+		if (where_is(game, 'D', '1'))
 			down_key(game);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT)
 		|| mlx_is_key_down(game->mlx, MLX_KEY_A))
-		if (where_is_wall(game, 'L'))
+		if (where_is(game, 'L', '1'))
 			left_key(game);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT)
 		|| mlx_is_key_down(game->mlx, MLX_KEY_D))
-		if (where_is_wall(game, 'R'))
+		if (where_is(game, 'R', '1'))
 			right_key(game);
 }

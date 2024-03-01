@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 23:03:14 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/01 01:59:53 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/01 21:46:40 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,13 @@ int	load_texture(t_game *game)
 		game->item = mlx_load_png("asset/textures/poop.png");
 		if (game->item == NULL)//message derreur
 			return(0);
-		game->exit = mlx_load_png("asset/textures/door.png");
-		if (game->exit == NULL)//message derreur
+		game->exit_close = mlx_load_png("asset/textures/door.png");
+		if (game->exit_close == NULL)//message derreur
 			return(0);
+		game->exit_open = mlx_load_png("asset/textures/door_open.png");
+		if (game->exit_open == NULL)
+			return (0);
+		// game->count_mouve = mlx_load_png("");
 		return(1);
 }
 
@@ -43,16 +47,17 @@ void	texture_to_image(t_game *game, void *mlx)
 	game->image_vide = mlx_texture_to_image(mlx, game->vide);
 	game->image_wall = mlx_texture_to_image(mlx, game->wall);
 	game->image_item = mlx_texture_to_image(mlx, game->item);
-	game->image_exit = mlx_texture_to_image(mlx, game->exit);
+	game->image_exit_close = mlx_texture_to_image(mlx, game->exit_close);
+	game->image_exit_open = mlx_texture_to_image(mlx, game->exit_open);
 	mlx_delete_texture(game->vide);
 	mlx_delete_texture(game->wall);
 	mlx_delete_texture(game->item);
-	mlx_delete_texture(game->exit);
+	mlx_delete_texture(game->exit_close);
+	mlx_delete_texture(game->exit_open);
 	mlx_delete_texture(game->character_rigth);
 	mlx_delete_texture(game->character_left);
 	
 }
-
 
 void	set_depth(t_game *game, char w, int x, int y)
 {
@@ -75,8 +80,10 @@ void	set_depth(t_game *game, char w, int x, int y)
 	}
 	else if (w == 'E')
 	{
-		mlx_image_to_window(game->mlx, game->image_exit, x * TILE_SIZE, y * TILE_SIZE);
-		mlx_set_instance_depth(&game->image_exit->instances[game->image_exit->count - 1], EXIT);
+		mlx_image_to_window(game->mlx, game->image_exit_close, x * TILE_SIZE, y * TILE_SIZE);
+		mlx_set_instance_depth(&game->image_exit_close->instances[game->image_exit_close->count - 1], EXIT +10);
+		mlx_image_to_window(game->mlx, game->image_exit_open, x * TILE_SIZE, y * TILE_SIZE);
+		mlx_set_instance_depth(&game->image_exit_open->instances[game->image_exit_open->count - 1], EXIT -10);
 	}
 	else if (w == '0')
 		return ;

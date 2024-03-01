@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:02:11 by Laubry            #+#    #+#             */
-/*   Updated: 2024/02/27 13:42:05 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/01 20:53:08 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,27 @@ void	set_size_x(t_game *game)
 		j++;
 	game->size_x = j;
 	close(fd);
+}
+
+void	how_item(t_game *game)
+{
+	int	i;
+	int	j;
+	int	nbr_item;
+
+	i = 0;
+	j = 0;
+	nbr_item = 0;
+	while(game->map[i])
+	{
+		j = 0;
+		while(game->map[i][j])
+		{
+			if (game->map[i][j] == 'C')
+				nbr_item++;
+			j++;
+		}
+		i++;
+	}
+	game->nbr_item = nbr_item;
 }

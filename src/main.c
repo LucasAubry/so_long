@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:32:05 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/01 17:03:21 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/01 21:29:09 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 #include "so_long.h"
 
 
-// void texture(mlx_t* mlx)
-// {
-// 	int i = 0;
-// }
+void	ft_loop(t_game *game)
+{
+	
+	mlx_loop_hook(game->mlx, &set_key, game);
+	mlx_loop(game->mlx);
+	mlx_terminate(game->mlx);
+}
 
 int main(void)
 {
@@ -41,10 +44,11 @@ int main(void)
 		free_all(game);
 		return (1);
 	}
+	game->how_item_collect = 0;
 	game->place_character[1] = 0;
 	game->place_character[2] = 0;
-	mlx_loop_hook(mlx, &set_key, game);
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
+	game->mouve = 0;
+	how_item(game);
+	ft_loop(game);
 	return (0);
 }
