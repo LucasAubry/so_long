@@ -62,6 +62,7 @@ void	set_size_y(t_game *game);
 void	set_size_x(t_game *game);
 int	where_is(t_game *game, char c, char z);
 void	how_item(t_game *game);
+void	init_data(t_game *game);
 //utils:
 int	init_map(t_game *game);
 void	printf_map_terminal(t_game *game);
@@ -76,6 +77,7 @@ int wall_left_right(t_game *game);
 //texture:
 int	set_texture(t_game *game, void *mlx);
 void	set_floor(t_game *game);
+void	set_carpet(t_game *game, int x, int y, char c);
 //move:
 void	set_key(void *param);
 int	ft_up(t_game *game, int x, int y, char z);

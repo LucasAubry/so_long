@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:02:11 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/01 20:53:08 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/01 22:54:49 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,11 @@ void	how_item(t_game *game)
 		i++;
 	}
 	game->nbr_item = nbr_item;
+}
+void	init_data(t_game *game)
+{
+	game->how_item_collect = 0;
+	game->place_character[1] = 0;
+	game->place_character[2] = 0;
+	game->mouve = 0;
 }
