@@ -16,7 +16,8 @@ FILES = main \
 		set_texture/set_texture \
 		mouve/mouve \
 		mouve/player \
-		item
+		item \
+		set_texture/animation
 
 SRCS = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix obj/, $(addsuffix .o, $(FILES)))

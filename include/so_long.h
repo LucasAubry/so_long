@@ -10,7 +10,7 @@
 # include <string.h>
 # include <stdbool.h>
 
-# define TILE_SIZE 32
+# define TILE_SIZE 64
 
 //depth
 #define CHARACTER 6
@@ -28,7 +28,9 @@ typedef struct s_game
 	mlx_image_t		*image_exit_close;
 	mlx_image_t		*image_exit_open;
 	mlx_image_t		*image_character_left;
+	mlx_image_t		*image_character_left_frame2;
 	mlx_image_t		*image_character_right;
+	mlx_image_t		*image_character_right_frame2;
 	mlx_image_t		*image_character;
 	mlx_image_t		*image_count_mouve;
 
@@ -38,6 +40,8 @@ typedef struct s_game
 	mlx_texture_t		*exit_close;
 	mlx_texture_t		*exit_open;
 	mlx_texture_t		*character_left;
+	mlx_texture_t		*character_left_frame2;
+	mlx_texture_t		*character_right_frame2;
 	mlx_texture_t		*character_rigth;
 	mlx_texture_t		*count_mouve;
 
@@ -47,6 +51,8 @@ typedef struct s_game
 	int				mouve;
 	int				how_item_collect;
 	int				nbr_item;
+	int				tick;
+
 	mlx_t			*mlx;
 	char			**map;
 	struct s_game	*next;
@@ -78,6 +84,7 @@ int wall_left_right(t_game *game);
 int	set_texture(t_game *game, void *mlx);
 void	set_floor(t_game *game);
 void	set_carpet(t_game *game, int x, int y, char c);
+void	animation(t_game *game, char c);
 //move:
 void	set_key(void *param);
 int	ft_up(t_game *game, int x, int y, char z);

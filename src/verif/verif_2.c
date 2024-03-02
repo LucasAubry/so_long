@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:03:12 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/01 03:13:01 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/02 17:58:41 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	character(t_game *game, int i, int j, int boule)
 	static int item = 0;
 	static int exit = 0;
 	static int player = 0;
+	static int bot = 0;
 
 	if (boule == 1)
 	{
@@ -38,6 +39,8 @@ int	character(t_game *game, int i, int j, int boule)
 		exit += 1;
 	if (game->map[i][j] == 'P')
 		player += 1;
+	if (game->map[i][j] == 'B')
+		bot +=1;
 	return(0);
 }
 

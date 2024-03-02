@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 23:03:14 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/01 21:46:40 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/02 16:28:51 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,22 @@
 
 int	load_texture(t_game *game)
 {
-		game->character_left = mlx_load_png("asset/textures/among_us_left.png");
+		game->character_left = mlx_load_png("asset/textures/after/64/rocket_left_big.png");
 		if (game->character_left == NULL)//message derreur
 			return(0);
-		game->character_rigth = mlx_load_png("asset/textures/among_us_right.png");
+		game->character_rigth = mlx_load_png("asset/textures/after/64/rocket_right_big.png");
 		if (game->character_rigth == NULL)
 			return(0);
-		game->vide = mlx_load_png("asset/textures/stone.png");
+		game->character_left_frame2 = mlx_load_png("asset/textures/after/64/rocket_left_litle.png");
+		if (game->character_left_frame2 == NULL)//messge derreur
+			return(0);
+		game->character_right_frame2 = mlx_load_png("asset/textures/after/64/rocket_right_litle.png");
+		if (game->character_right_frame2 == NULL)//messge derreur
+			return(0);
+		game->vide = mlx_load_png("asset/textures/after/64/big_back.png");
 		if (game->vide == NULL)//message derreur
 			return(0);
-		game->wall = mlx_load_png("asset/textures/wood.png");
+		game->wall = mlx_load_png("asset/textures/after/64/black_hole.png");
 		if (game->wall == NULL)//message derreur
 			return(0);
 		game->item = mlx_load_png("asset/textures/poop.png");
@@ -43,7 +49,9 @@ int	load_texture(t_game *game)
 void	texture_to_image(t_game *game, void *mlx)
 {
 	game->image_character_left = mlx_texture_to_image(mlx, game->character_left);
+	game->image_character_left_frame2 = mlx_texture_to_image(mlx, game->character_left_frame2);
 	game->image_character_right = mlx_texture_to_image(mlx, game->character_rigth);
+	game->image_character_right_frame2 = mlx_texture_to_image(mlx, game->character_right_frame2);
 	game->image_vide = mlx_texture_to_image(mlx, game->vide);
 	game->image_wall = mlx_texture_to_image(mlx, game->wall);
 	game->image_item = mlx_texture_to_image(mlx, game->item);
@@ -54,8 +62,11 @@ void	texture_to_image(t_game *game, void *mlx)
 	mlx_delete_texture(game->item);
 	mlx_delete_texture(game->exit_close);
 	mlx_delete_texture(game->exit_open);
-	mlx_delete_texture(game->character_rigth);
 	mlx_delete_texture(game->character_left);
+	mlx_delete_texture(game->character_left_frame2);
+	mlx_delete_texture(game->character_rigth);
+	mlx_delete_texture(game->character_right_frame2);
+	
 	
 }
 
@@ -65,8 +76,12 @@ void	set_depth(t_game *game, char w, int x, int y)
 	{
 		mlx_image_to_window(game->mlx, game->image_character_right, x * TILE_SIZE, y * TILE_SIZE);
 		mlx_image_to_window(game->mlx, game->image_character_left, x * TILE_SIZE, y * TILE_SIZE);
+		mlx_image_to_window(game->mlx, game->image_character_right_frame2, x * TILE_SIZE, y * TILE_SIZE);
+		mlx_image_to_window(game->mlx, game->image_character_left_frame2, x * TILE_SIZE, y * TILE_SIZE);
 		mlx_set_instance_depth(&game->image_character_right->instances[game->image_character_right->count - 1], CHARACTER);
 		mlx_set_instance_depth(&game->image_character_left->instances[game->image_character_left->count - 1], CHARACTER);
+		mlx_set_instance_depth(&game->image_character_right_frame2->instances[game->image_character_right_frame2->count - 1], CHARACTER);
+		mlx_set_instance_depth(&game->image_character_left_frame2->instances[game->image_character_left_frame2->count - 1], CHARACTER);
 	}
 	else if (w == '1')
 	{
