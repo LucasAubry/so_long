@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:59:19 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/03 03:54:46 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/03 04:57:24 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,10 @@ void	set_key(void *param)
 {
 	t_game *game;
 	static int tick = 0;
-
+		
 	tick++;
 	game =(t_game *)param;
+	if_is_finish(param);
 	game->tick = tick;
 	if (tick % 3)
 		return ;

@@ -20,7 +20,8 @@ FILES = main \
 		item \
 		set_texture/animation \
 		set_texture/bot/set_bot \
-		end_game
+		end_game \
+		verif/if_finish
 
 SRCS = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix obj/, $(addsuffix .o, $(FILES)))

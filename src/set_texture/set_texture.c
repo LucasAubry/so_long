@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 23:03:14 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/03 03:29:42 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/03 04:06:36 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,12 @@ void	set_depth(t_game *game, char w, int x, int y)
 		mlx_image_to_window(game->mlx, game->image_character_left, x * TILE_SIZE, y * TILE_SIZE);
 		mlx_image_to_window(game->mlx, game->image_character_right_frame2, x * TILE_SIZE, y * TILE_SIZE);
 		mlx_image_to_window(game->mlx, game->image_character_left_frame2, x * TILE_SIZE, y * TILE_SIZE);
-		mlx_image_to_window(game->mlx, game->image_explosion, game->place_character[1] * TILE_SIZE, game->place_character[2] * TILE_SIZE);
+		mlx_image_to_window(game->mlx, game->image_explosion, x * TILE_SIZE, y * TILE_SIZE);
 		mlx_set_instance_depth(&game->image_character_right->instances[game->image_character_right->count - 1], CHARACTER);
 		mlx_set_instance_depth(&game->image_character_left->instances[game->image_character_left->count - 1], CHARACTER);
 		mlx_set_instance_depth(&game->image_character_right_frame2->instances[game->image_character_right_frame2->count - 1], CHARACTER);
 		mlx_set_instance_depth(&game->image_character_left_frame2->instances[game->image_character_left_frame2->count - 1], CHARACTER);
-		mlx_set_instance_depth(&game->image_explosion->instances[game->image_explosion->count - 1], CHARACTER -1);
+		mlx_set_instance_depth(&game->image_explosion->instances[game->image_explosion->count - 1], VIDE -1);
 	}
 	else if (w == '1')
 	{

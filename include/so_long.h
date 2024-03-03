@@ -113,6 +113,7 @@ int wall_up_down(t_game *game);
 int wall_left_right(t_game *game);
 void	end_game(t_game *game);
 void	lose_hp(t_game *game);
+void	if_is_finish(t_game *game);
 //texture:
 int	set_texture(t_game *game, void *mlx);
 void	set_floor(t_game *game);
