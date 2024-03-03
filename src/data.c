@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:02:11 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/02 17:58:21 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/03 03:46:54 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,53 @@ void	init_data(t_game *game)
 	game->place_character[1] = 0;
 	game->place_character[2] = 0;
 	game->mouve = 0;
+	game->life_of_player = 2;
+}
+
+void	how_bot(t_game *game)
+{
+	int	i;
+	int	j;
+	int	nbr_bot;
+
+	i = 0;
+	j = 0;
+	nbr_bot = 0;
+	while(game->map[i])
+	{
+		j = 0;
+		while(game->map[i][j])
+		{
+			if (game->map[i][j] == 'B')
+				nbr_bot++;
+			j++;
+		}
+		i++;
+	}
+	game->nbr_bot = nbr_bot;
+}
+
+void 	where_is_exit(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while(game->map[i][j])
+		{
+			if (game->map[i][j] == 'E')
+			{
+				game->place_exit[1] = i;
+				game->place_exit[2] = j;
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
+	return ;	
 }

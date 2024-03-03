@@ -16,8 +16,11 @@ FILES = main \
 		set_texture/set_texture \
 		mouve/mouve \
 		mouve/player \
+		mouve/life_player \
 		item \
-		set_texture/animation
+		set_texture/animation \
+		set_texture/bot/set_bot \
+		end_game
 
 SRCS = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix obj/, $(addsuffix .o, $(FILES)))
