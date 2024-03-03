@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:03:27 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/03 04:32:06 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/03 07:41:15 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,33 +69,27 @@ void	anim_bot(t_game *game)
 	tick++;
 	static int rand = 0;
 	rand = ft_rand_int(game->nbr_bot);
-	if (tick == 1 ||tick == 7)
+	if (tick == 5 ||tick == 20)
 	{
 		mlx_set_instance_depth(&game->image_bot_1->instances[game->image_bot_1->count - rand], WALL +5);
 		mlx_set_instance_depth(&game->image_bot_2->instances[game->image_bot_2->count - rand], WALL -5);
 		mlx_set_instance_depth(&game->image_bot_3->instances[game->image_bot_3->count - rand], WALL -5);
 	}
-	else if (tick == 3 ||tick == 9)
+	else if (tick == 10 ||tick == 25)
 	{
 		mlx_set_instance_depth(&game->image_bot_1->instances[game->image_bot_1->count - rand], WALL -5);
 		mlx_set_instance_depth(&game->image_bot_2->instances[game->image_bot_2->count - rand], WALL +5);
 		mlx_set_instance_depth(&game->image_bot_3->instances[game->image_bot_3->count - rand], WALL -5);
 	}
-	else if (tick == 5 || tick == 11)
+	else if (tick == 15 || tick == 30)
 	{
 		mlx_set_instance_depth(&game->image_bot_1->instances[game->image_bot_1->count - rand], WALL -5);
 		mlx_set_instance_depth(&game->image_bot_2->instances[game->image_bot_2->count - rand], WALL -5);
 		mlx_set_instance_depth(&game->image_bot_3->instances[game->image_bot_3->count - rand], WALL +5);
-		if (tick != 5)
+		if (tick != 15)
 			tick = 0;
 	}
 }
-
-
-
-
-
-
 
 void	animation(t_game *game, char c)
 {
@@ -119,6 +113,5 @@ void	animation(t_game *game, char c)
 		else
 			E_else(game);
 	}
-	anim_bot(game);
 	// anim_wall(game);
 }

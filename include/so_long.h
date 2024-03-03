@@ -30,6 +30,7 @@ typedef struct s_game
 	mlx_texture_t		*texture_bot_5;
 	mlx_texture_t		*texture_bot_6;
 	mlx_texture_t		*vide;
+	mlx_texture_t		*vide_player;
 	mlx_texture_t		*wall;
 	mlx_texture_t		*wall_frame2;
 	mlx_texture_t		*wall_frame3;
@@ -42,8 +43,11 @@ typedef struct s_game
 	mlx_texture_t		*character_rigth;
 	mlx_texture_t		*count_mouve;
 	mlx_texture_t		*explosion;
+	mlx_texture_t		*brock_character;
+	mlx_texture_t		*brock_character_f1;
 
 	mlx_image_t		*image_vide;
+	mlx_image_t		*image_vide_player;
 	mlx_image_t		*image_wall;
 	mlx_image_t		*image_wall_frame2;
 	mlx_image_t		*image_wall_frame3;
@@ -57,6 +61,8 @@ typedef struct s_game
 	mlx_image_t		*image_character;
 	mlx_image_t		*image_count_mouve;
 	mlx_image_t		*image_explosion;
+	mlx_image_t		*image_brock_character;
+	mlx_image_t		*image_brock_character_f1;
 	//bot
 	mlx_image_t		*image_bot_1;
 	mlx_image_t		*image_bot_2;
@@ -76,6 +82,7 @@ typedef struct s_game
 	int				tick;
 	int				life_of_player;
 	int				place_exit[3];
+	int				speed;
 	//bot
 	int				nbr_bot;
 
@@ -119,6 +126,7 @@ int	set_texture(t_game *game, void *mlx);
 void	set_floor(t_game *game);
 void	set_carpet(t_game *game, int x, int y, char c);
 void	animation(t_game *game, char c);
+void	anim_bot(t_game *game);
 //bot;
 int	load_texture_bot(t_game *game);
 void	texture_to_image_bot(t_game *game, void *mlx);

@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:02:11 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/03 03:46:54 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/03 07:24:28 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	init_data(t_game *game)
 	game->place_character[2] = 0;
 	game->mouve = 0;
 	game->life_of_player = 2;
+	game->speed = 3;
 }
 
 void	how_bot(t_game *game)

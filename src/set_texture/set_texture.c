@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 23:03:14 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/03 04:06:36 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/03 07:34:06 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ int	load_texture(t_game *game)
 	game->vide = mlx_load_png("asset/textures/after/64/big_back.png");
 	if (game->vide == NULL)//message derreur
 		return(0);
+	game->vide_player = mlx_load_png("asset/textures/after/64/big_back.png");
+	if (game->vide_player == NULL)//message derreur
+		return(0);
 	game->wall = mlx_load_png("asset/textures/after/64/black_hole_frame1.png");
 	if (game->wall == NULL)//message derreur
 		return(0);
@@ -55,6 +58,12 @@ int	load_texture(t_game *game)
 	game->explosion = mlx_load_png("asset/textures/bot/explosion.png");
 	if (game->explosion == NULL)
 		return (0);
+	game->brock_character = mlx_load_png("asset/textures/bot/amongus.png");
+	if (game->brock_character == NULL)
+		return (0);
+	game->brock_character_f1 = mlx_load_png("asset/textures/bot/amongus_fire.png");
+	if (game->brock_character_f1 == NULL)
+		return (0);
 	// game->count_mouve = mlx_load_png("");
 	return(1);
 }
@@ -67,6 +76,7 @@ void	texture_to_image(t_game *game, void *mlx)
 	game->image_character_right = mlx_texture_to_image(mlx, game->character_rigth);
 	game->image_character_right_frame2 = mlx_texture_to_image(mlx, game->character_right_frame2);
 	game->image_vide = mlx_texture_to_image(mlx, game->vide);
+	game->image_vide_player = mlx_texture_to_image(mlx, game->vide_player);
 	game->image_wall = mlx_texture_to_image(mlx, game->wall);
 	game->image_item = mlx_texture_to_image(mlx, game->item);
 	game->image_exit_close = mlx_texture_to_image(mlx, game->exit_close);
@@ -74,7 +84,10 @@ void	texture_to_image(t_game *game, void *mlx)
 	game->image_wall_frame2 = mlx_texture_to_image(mlx, game->wall_frame2);
 	game->image_wall_frame3 = mlx_texture_to_image(mlx, game->wall_frame3);
 	game->image_explosion = mlx_texture_to_image(mlx, game->explosion);
+	game->image_brock_character = mlx_texture_to_image(mlx, game->brock_character);
+	game->image_brock_character_f1 = mlx_texture_to_image(mlx, game->brock_character_f1);
 	mlx_delete_texture(game->vide);
+	mlx_delete_texture(game->vide_player);
 	mlx_delete_texture(game->wall);
 	mlx_delete_texture(game->item);
 	mlx_delete_texture(game->exit_close);
@@ -86,6 +99,8 @@ void	texture_to_image(t_game *game, void *mlx)
 	mlx_delete_texture(game->wall_frame2);
 	mlx_delete_texture(game->wall_frame3);
 	mlx_delete_texture(game->explosion);
+	mlx_delete_texture(game->brock_character);
+	mlx_delete_texture(game->brock_character_f1);
 }
 
 void	set_depth(t_game *game, char w, int x, int y)
@@ -97,11 +112,19 @@ void	set_depth(t_game *game, char w, int x, int y)
 		mlx_image_to_window(game->mlx, game->image_character_right_frame2, x * TILE_SIZE, y * TILE_SIZE);
 		mlx_image_to_window(game->mlx, game->image_character_left_frame2, x * TILE_SIZE, y * TILE_SIZE);
 		mlx_image_to_window(game->mlx, game->image_explosion, x * TILE_SIZE, y * TILE_SIZE);
+		mlx_image_to_window(game->mlx, game->image_brock_character, x * TILE_SIZE, y * TILE_SIZE);
+		mlx_image_to_window(game->mlx, game->image_brock_character_f1, x * TILE_SIZE, y * TILE_SIZE);
+		mlx_image_to_window(game->mlx, game->image_vide, x * TILE_SIZE, y * TILE_SIZE);
+		mlx_image_to_window(game->mlx, game->image_vide_player, x * TILE_SIZE, y * TILE_SIZE);
 		mlx_set_instance_depth(&game->image_character_right->instances[game->image_character_right->count - 1], CHARACTER);
 		mlx_set_instance_depth(&game->image_character_left->instances[game->image_character_left->count - 1], CHARACTER);
 		mlx_set_instance_depth(&game->image_character_right_frame2->instances[game->image_character_right_frame2->count - 1], CHARACTER);
 		mlx_set_instance_depth(&game->image_character_left_frame2->instances[game->image_character_left_frame2->count - 1], CHARACTER);
 		mlx_set_instance_depth(&game->image_explosion->instances[game->image_explosion->count - 1], VIDE -1);
+		mlx_set_instance_depth(&game->image_brock_character->instances[game->image_brock_character->count -1], VIDE -1);
+		mlx_set_instance_depth(&game->image_brock_character_f1->instances[game->image_brock_character_f1->count -1], VIDE -1);
+		mlx_set_instance_depth(&game->image_vide->instances[game->image_vide->count -1], VIDE -10);
+		mlx_set_instance_depth(&game->image_vide_player->instances[0], VIDE -10);
 	}
 	else if (w == '1')
 	{

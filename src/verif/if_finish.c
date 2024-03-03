@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 04:53:56 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/03 05:00:57 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/03 06:04:05 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,6 @@ void	if_is_finish(t_game *game)
 	j = game->image_character_right->instances[0].x /TILE_SIZE;
 	x = game->place_exit[1];
 	y = game->place_exit[2];
-	printf("%d\n", i);
-	printf("%d\n", j);
-	printf("%d\n", x);
-	printf("%d\n", y);
 	if (game->how_item_collect == game->nbr_item && i == x && j == y)
 		end_game(game);
 	return ;
