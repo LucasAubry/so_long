@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:59:19 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/03 07:39:52 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/03 22:04:29 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	where_is(t_game *game, char c, char z)
 			return(0);
 	else if (c == 'R' && !ft_right(game, x, y, z))
 			return(0);
+	mlx_set_instance_depth(&game->image_explosion->instances[game->image_explosion->count - 1], CHARACTER -53);
 	return (1);
 }
 
@@ -101,6 +102,13 @@ void	set_key(void *param)
 	game =(t_game *)param;
 	if_is_finish(param);
 	anim_bot(param);
+	if (game->life_of_player == 1)
+	{
+		// mlx_set_instance_depth(&game->image_brock_character_f1->instances[0], CHARACTER - 52);
+		mlx_set_instance_depth(&game->image_brock_character->instances[0], CHARACTER + 51);
+		mlx_set_instance_depth(&game->image_explosion->instances[0], CHARACTER -53);
+
+	}
 	game->tick = tick;
 	if (tick % game->speed)
 		return ;
@@ -119,4 +127,5 @@ void	set_key(void *param)
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
 		if (where_is(game, 'R', '1'))
 			right_key(game);
+	mlx_set_instance_depth(&game->image_brock_character_f1->instances[0], CHARACTER - 51);
 }
