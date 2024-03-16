@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 02:25:39 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/03 21:51:31 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/05 17:33:17 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,3 @@ void	lose_hp(t_game *game)
 	else if (game->life_of_player <= 0)
 		end_game(game);
 }
-
-		// mlx_set_instance_depth(&game->image_brock_character->instances[0], CHARACTER + 51);
-		// mlx_set_instance_depth(&game->image_brock_character_f1->instances[0], CHARACTER - 52);
-

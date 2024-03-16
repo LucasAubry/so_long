@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 02:59:15 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/03 03:14:52 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/16 19:06:29 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,4 @@
 void	end_game(t_game *game)
 {
 	mlx_close_window(game->mlx);
-	free_all(game);
 }

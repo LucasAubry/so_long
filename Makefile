@@ -14,13 +14,17 @@ FILES = main \
 		verif/verif_2 \
 		set_texture/set_floor \
 		set_texture/set_texture \
+		set_texture/load_texture \
 		mouve/mouve \
 		mouve/player \
 		mouve/life_player \
 		item \
-		set_texture/animation \
+		set_texture/animation/animation \
 		set_texture/bot/set_bot \
 		end_game \
+		set_texture/item/set_item \
+		set_texture/item/load_texture_item \
+		set_texture/item/texture_to_image_item \
 		verif/if_finish
 
 SRCS = $(addprefix src/, $(addsuffix .c, $(FILES)))

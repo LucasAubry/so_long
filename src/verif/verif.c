@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 23:23:31 by Laubry            #+#    #+#             */
-/*   Updated: 2024/02/27 15:03:31 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/15 17:17:08 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ int check_the_wall(t_game *game)
 
 int	check_the_character(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	while(game->map[i])
+	while (game->map[i])
 	{
 		j = 0;
 		while (game->map[i][j])
@@ -54,25 +54,45 @@ int	check_the_character(t_game *game)
 	if (!character(game, i, j, 1))
 		return (0);
 	else
-		return(1);
+		return (1);
 }
 
-int verif_map(t_game *game)
+int check(t_game *game)
 {
+	if (!check_the_wall(game))
+	{
+		ft_printf("Error : la Map n'est pas compris entre des murs\n");
+		return (0);
+	}
+	if (!check_the_character(game))
+	{
+		ft_printf
+			("Error : La Map contient un doublou ou manque d'un element\n");
+		return (0);
+	}
+	return (1);
+}
+
+int	verif_map(t_game *game)
+{
+	where_is_character(game);
+	how_item(game);
 	if (size_map(game) == 1)
 	{
 		ft_printf("Error : Ligne de taille differente\n");
 		return (0);
 	}
-	if (!check_the_wall(game))
+	if (check(game) == 0)
+		return (0);
+	if (!can_get_items(game))
 	{
-		ft_printf("Error : la Map n'est pas compris entre des murs\n");
-		return(0);
+		ft_printf("Error : Un collectible n'est pas accessible\n");
+		return (0);
 	}
-	if (!check_the_character(game))
+	if (!verif_finish(game))
 	{
-		ft_printf("Error : La Map contient un doublou ou manque d'un element\n");
-		return(0);
+		ft_printf("Error : La Map n'est pas terminable\n");
+		return (0);
 	}
-	return(1);
+	return (1);
 }

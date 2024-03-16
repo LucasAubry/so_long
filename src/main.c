@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:32:05 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/03 05:01:24 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/16 19:51:29 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,35 +17,45 @@ void	ft_loop(t_game *game)
 {
 	mlx_loop_hook(game->mlx, &set_key, game);
 	mlx_loop(game->mlx);
-	mlx_terminate(game->mlx);
+	free_all(game, 1);
 }
 
-int main(void)
+int	init_setting(t_game *game, void *mlx)
 {
-	void	*mlx;
-	t_game *game;
-
-	mlx = mlx_init(1500,1000,"so_long",true);
+	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	if (!mlx)
 		return (1);
-	game = malloc(sizeof(t_game));
-	if (!game)
-		return (1); //error message
 	game->mlx = mlx;
-	if (!init_map(game) || !verif_map(game))
+	init_data_befor_map(game);
+	return (0);
+}
+
+
+int	main(int argc, char **argv)
+{
+	void	*mlx;
+	t_game	*game;
+
+	if (argc == 2)
 	{
-		free_all(game);
-		return(1);
+		mlx = mlx_init(1500, 1000, "so_long", true);
+		game = malloc(sizeof(t_game));
+		if (!game || init_setting(game, mlx))
+			return (1);
+		if (!init_map(game, argv) || !verif_map(game))
+		{
+			free_all(game, 1);
+			free(game);
+			return (1);
+		}
+		if (!set_texture(game, mlx))
+		{
+			free_all(game, 0);
+			return (1);
+		}
+		init_data(game);
+		ft_loop(game);
+		free(game);
 	}
-	if (!set_texture(game, mlx))
-	{
-		free_all(game);
-		return (1);
-	}
-	init_data(game);
-	where_is_exit(game);
-	how_item(game);
-	how_bot(game);
-	ft_loop(game);
 	return (0);
 }

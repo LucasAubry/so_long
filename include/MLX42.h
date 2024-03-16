@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 02:29:06 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/02/29 16:08:08 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/04 18:41:23 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # include <stdbool.h>
 # ifdef __cplusplus
 extern "C" {
+
 # endif
 
 //= Types =//

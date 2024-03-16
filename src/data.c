@@ -6,39 +6,39 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 14:02:11 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/03 07:24:28 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/16 19:09:44 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	set_size_y(t_game *game)
-{	
-	int fd;
-	char *temp;
-	
-	fd = open("asset/maps/maps.ber", O_RDONLY);
+void	set_size_y(t_game *game, char **argv)
+{
+	int		fd;
+	char	*temp;
+
+	fd = open(argv[1], O_RDONLY);
 	if (!check_perror(fd))
 		return ;
 	game->size_y = 0;
-	while (1) 
+	while (1)
 	{
 		temp = get_next_line(fd);
 		if (temp == NULL)
-			break;
+			break ;
 		game->size_y += 1;
 		free(temp);
 	}
 	close(fd);
 }
 
-void	set_size_x(t_game *game)
+void	set_size_x(t_game *game, char **argv)
 {
-	int j;
+	int	j;
+	int	fd;
 
 	j = 0;
-	int fd;
-	fd = open("asset/maps/maps.ber", O_RDONLY);
+	fd = open(argv[1], O_RDONLY);
 	if (!check_perror(fd))
 		return ;
 	game->size_x = 0;
@@ -57,10 +57,10 @@ void	how_item(t_game *game)
 	i = 0;
 	j = 0;
 	nbr_item = 0;
-	while(game->map[i])
+	while (game->map[i])
 	{
 		j = 0;
-		while(game->map[i][j])
+		while (game->map[i][j])
 		{
 			if (game->map[i][j] == 'C')
 				nbr_item++;
@@ -70,6 +70,20 @@ void	how_item(t_game *game)
 	}
 	game->nbr_item = nbr_item;
 }
+
+void	init_data_befor_map(t_game *game)
+{
+	game->c_vide = 0;
+	game->c_wall = 0;
+	game->c_item = 0;
+	game->c_exit = 0;
+	game->c_player = 0;
+	game->c_bot = 0;
+	game->string = NULL;
+	// where_is_character(game);
+	// how_item(game);
+}
+
 void	init_data(t_game *game)
 {
 	game->how_item_collect = 0;
@@ -78,6 +92,9 @@ void	init_data(t_game *game)
 	game->mouve = 0;
 	game->life_of_player = 2;
 	game->speed = 3;
+	where_is_exit(game);
+	// how_item(game);
+	how_bot(game);
 }
 
 void	how_bot(t_game *game)
@@ -89,10 +106,10 @@ void	how_bot(t_game *game)
 	i = 0;
 	j = 0;
 	nbr_bot = 0;
-	while(game->map[i])
+	while (game->map[i])
 	{
 		j = 0;
-		while(game->map[i][j])
+		while (game->map[i][j])
 		{
 			if (game->map[i][j] == 'B')
 				nbr_bot++;
@@ -103,7 +120,7 @@ void	how_bot(t_game *game)
 	game->nbr_bot = nbr_bot;
 }
 
-void 	where_is_exit(t_game *game)
+void	where_is_exit(t_game *game)
 {
 	int	i;
 	int	j;
@@ -113,7 +130,7 @@ void 	where_is_exit(t_game *game)
 	while (game->map[i])
 	{
 		j = 0;
-		while(game->map[i][j])
+		while (game->map[i][j])
 		{
 			if (game->map[i][j] == 'E')
 			{
@@ -125,5 +142,28 @@ void 	where_is_exit(t_game *game)
 		}
 		i++;
 	}
-	return ;	
+	return ;
+}
+
+void	where_is_character(t_game *game)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while(game->map[i])
+	{
+		j = 0;
+		while(game->map[i][j])
+		{
+			if (game->map[i][j] == 'P')
+			{
+				game->character_first_place[1] = i;
+				game->character_first_place[2] = j;
+			}
+			j++;	
+		}
+		i++;
+	}
 }
