@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:17:33 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/18 13:26:06 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/18 18:15:54 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,7 @@ void	how_bot(t_game *game);
 int		ft_rand_int(int max);
 void	put_my_string(t_game *game, void *mlx);
 int		ft_strcmp(char *s1, char *s2);
+int		verif_item_end(t_game *game, int nb_item, int exit);
 //verif:
 int		verif_map(t_game *game);
 int		character(t_game *game, int i, int j, int boule);
@@ -191,6 +192,8 @@ int		can_get_items(t_game *game);
 void	can_i_finish(t_game *game, int i, int j);
 int		verif_finish(t_game *game);
 int		verif_ber(char **argv);
+int		size_map(t_game *game);
+int		check_modif_negatif(t_game *game, int nb_item, int exit);
 //texture:
 void	set_floor(t_game *game);
 void	anim_bot(t_game *game);
@@ -202,10 +205,21 @@ void	animation(t_game *game, char c);
 int		load_texture_character(t_game *game);
 int		load_texture_explosion(t_game *game);
 void	set_carpet(t_game *game, int x, int y, char c);
+void	set_depth(t_game *game, char w, int x, int y);
+int		load_texture(t_game *game);
+void	texture_to_image(t_game *game, void *mlx);
+void	image_to_windows(t_game *game);
+char	what_texture(t_game *game, int x, int y);
+void	l_if(t_game *game);
+void	l_else(t_game *game);
+void	e_if(t_game *game);
+void	e_else(t_game *game);
 //item_texure
 int		load_texture_item(t_game *game);
 void	set_item(t_game *game, int x, int y);
 void	texure_to_image_item(t_game *game, void *mlx);
+void	set_depth_item_4(t_game *game, int x, int y);
+void	set_depth_item_5(t_game *game, int x, int y);
 //bot;
 int		load_texture_bot(t_game *game);
 void	set_depth_bot(t_game *game, int x, int y);
@@ -216,4 +230,8 @@ int		ft_up(t_game *game, int x, int y, char z);
 int		ft_down(t_game *game, int x, int y, char z);
 int		ft_left(t_game *game, int x, int y, char z);
 int		ft_right(t_game *game, int x, int y, char z);
+void	up_key(t_game *game);
+void	down_key(t_game *game);
+void	left_key(t_game *game);
+void	right_key(t_game *game);
 #endif

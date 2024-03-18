@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:20:02 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/16 16:27:21 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/18 18:10:35 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	ft_up(t_game *game, int x, int y, char z)
 {
-	char *str;
+	char	*str;
+
 	if (game->map[y -1][x] == z)
 		return (0);
 	else
@@ -38,9 +39,10 @@ int	ft_up(t_game *game, int x, int y, char z)
 
 int	ft_down(t_game *game, int x, int y, char z)
 {
-	char *str;
+	char	*str;
+
 	if (game->map[y +1][x] == z)
-		return(0);
+		return (0);
 	else
 	{
 		if (game->map[y +1][x] == 'C')
@@ -62,9 +64,10 @@ int	ft_down(t_game *game, int x, int y, char z)
 
 int	ft_left(t_game *game, int x, int y, char z)
 {
-	char *str;
+	char	*str;
+
 	if (game->map[y][x -1] == z)
-			return(0);
+		return (0);
 	else
 	{
 		if (game->map[y][x -1] == 'C')
@@ -86,9 +89,10 @@ int	ft_left(t_game *game, int x, int y, char z)
 
 int	ft_right(t_game *game, int x, int y, char z)
 {
-	char *str;
+	char	*str;
+
 	if (game->map[y][x +1] == z)
-			return (0);
+		return (0);
 	else
 	{
 		if (game->map[y][x +1] == 'C')

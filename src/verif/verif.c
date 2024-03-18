@@ -6,32 +6,18 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 23:23:31 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/15 17:17:08 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/18 17:32:33 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int size_map(t_game *game)
-{
-	int i;
-	
-	i = 0;
-	while (game->map[i])
-	{
-		if (i > 0 && ft_strlen(game->map[i - 1]) != ft_strlen(game->map[i]))
-			return 1;
-		i++;
-	}
-	return 0;
-}
-
-int check_the_wall(t_game *game)
+int	check_the_wall(t_game *game)
 {
 	if (!wall_up_down(game) || !wall_left_right(game))
-		return(0);
+		return (0);
 	else
-		return(1);
+		return (1);
 }
 
 int	check_the_character(t_game *game)
@@ -57,7 +43,7 @@ int	check_the_character(t_game *game)
 		return (1);
 }
 
-int check(t_game *game)
+int	check(t_game *game)
 {
 	if (!check_the_wall(game))
 	{
@@ -94,5 +80,19 @@ int	verif_map(t_game *game)
 		ft_printf("Error : La Map n'est pas terminable\n");
 		return (0);
 	}
+	return (1);
+}
+
+int	verif_finish(t_game *game)
+{
+	int	nb_item;
+	int	exit;
+
+	nb_item = 0;
+	exit = 0;
+	can_i_finish(game, game->character_first_place[1],
+		game->character_first_place[2]);
+	if (!check_modif_negatif(game, nb_item, exit))
+		return (0);
 	return (1);
 }

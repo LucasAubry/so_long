@@ -6,33 +6,11 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:29:23 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/05 19:48:40 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/18 17:40:02 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	set_floor(t_game *game)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (game->map[y])
-	{
-		x = 0;
-		while (game->map[y][x])
-		{
-			mlx_image_to_window(game->mlx, game->image_vide,
-				x * TILE_SIZE, y * TILE_SIZE);
-			mlx_set_instance_depth(&game->image_vide->instances
-			[game->image_vide->count -1], VIDE);
-			x++;
-		}
-		y++;
-	}
-}
 
 void	carpet_u(t_game *game, int x, int y)
 {
@@ -52,7 +30,7 @@ void	carpet_d(t_game *game, int x, int y)
 
 void	carpet_l(t_game *game, int x, int y)
 {
-	game->map[y][x-1] = 0;
+	game->map[y][x -1] = 0;
 	mlx_image_to_window(game->mlx, game->image_vide,
 		(x -1) * TILE_SIZE, y * TILE_SIZE);
 	take_item(game);

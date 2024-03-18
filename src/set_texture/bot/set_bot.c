@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 23:35:58 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/05 19:51:53 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/18 17:41:13 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,27 @@ int	load_texture_bot(t_game *game)
 {
 	game->texture_bot_1 = mlx_load_png
 		("asset/textures/bot/bot.png");
-	if (game->texture_bot_1 == NULL)//message derreur
+	if (game->texture_bot_1 == NULL)
 		return (0);
 	game->texture_bot_2 = mlx_load_png
 		("asset/textures/bot/bot_f1.png");
-	if (game->texture_bot_2 == NULL)//message derreur
+	if (game->texture_bot_2 == NULL)
 		return (0);
 	game->texture_bot_3 = mlx_load_png
 		("asset/textures/bot/bot_f2.png");
-	if (game-> texture_bot_3== NULL)//message derreur
+	if (game-> texture_bot_3 == NULL)
 		return (0);
 	game->texture_bot_4 = mlx_load_png
 		("asset/textures/bot/bot_up_f1.png");
-	if (game->texture_bot_4 == NULL)//message derreur
+	if (game->texture_bot_4 == NULL)
 		return (0);
 	game->texture_bot_5 = mlx_load_png
 		("asset/textures/bot/bot_up_f2.png");
-	if (game->texture_bot_5 == NULL)//message derreur
-		return (0);	
+	if (game->texture_bot_5 == NULL)
+		return (0);
 	game->texture_bot_6 = mlx_load_png
 		("asset/textures/bot/bot_up_f3.png");
-	if (game->texture_bot_6 == NULL)//message derreur
+	if (game->texture_bot_6 == NULL)
 		return (0);
 	return (1);
 }

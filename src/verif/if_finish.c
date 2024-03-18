@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 04:53:56 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/14 13:42:59 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/18 17:01:54 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	if_is_finish(t_game *game)
 	int	x;
 	int	y;
 
-	i = game->image_character_right->instances[0].y /TILE_SIZE;
-	j = game->image_character_right->instances[0].x /TILE_SIZE;
+	i = game->image_character_right->instances[0].y / TILE_SIZE;
+	j = game->image_character_right->instances[0].x / TILE_SIZE;
 	x = game->place_exit[1];
 	y = game->place_exit[2];
 	if (game->how_item_collect == game->nbr_item && i == x && j == y)

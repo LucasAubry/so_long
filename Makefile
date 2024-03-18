@@ -7,22 +7,29 @@ LFLAGS = -Llib -lft -ldl -lglfw -pthread
 
 FILES = main \
 		map \
-		data \
+		data/data \
+		data/data_2 \
 		free \
 		utils \
 		verif/verif \
 		verif/verif_2 \
+		verif/verif_3 \
 		set_texture/set_floor \
 		set_texture/set_texture \
+		set_texture/set_texture_2 \
+		set_texture/set_depth \
 		set_texture/load_texture \
 		mouve/mouve \
 		mouve/player \
+		mouve/key \
 		mouve/life_player \
-		item \
+		set_texture/item/item \
 		set_texture/animation/animation \
+		set_texture/animation/animation_2 \
 		set_texture/bot/set_bot \
 		end_game \
 		set_texture/item/set_item \
+		set_texture/item/set_item_2 \
 		set_texture/item/load_texture_item \
 		set_texture/item/texture_to_image_item \
 		verif/if_finish

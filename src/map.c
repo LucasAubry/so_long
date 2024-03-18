@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:32:07 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/18 15:59:18 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/18 16:01:55 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	map_in_tab(t_game *game, char **argv)
 int	verif_ber(char **argv)
 {
 	int	i;
-	int point;
+	int	point;
 
 	i = 0;
 	point = 0;

@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:32:05 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/18 13:43:47 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/18 17:31:55 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ int	init_setting(t_game *game, void *mlx)
 	return (0);
 }
 
+void	dtf(t_game *game)
+{
+	init_data(game);
+	ft_loop(game);
+	free(game);
+}
 
 int	main(int argc, char **argv)
 {
@@ -46,16 +52,14 @@ int	main(int argc, char **argv)
 		{
 			free_all(game, 1);
 			free(game);
-			return (1); 
+			return (1);
 		}
 		if (!set_texture(game, mlx))
 		{
 			free_all(game, 0);
 			return (1);
 		}
-		init_data(game);
-		ft_loop(game);
-		free(game);
+		dtf(game);
 	}
 	return (0);
 }
