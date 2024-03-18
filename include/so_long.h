@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:17:33 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/16 19:46:53 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/18 13:26:06 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ void	init_data_befor_map(t_game *game);
 void	where_is_exit(t_game *game);
 void	where_is_character(t_game *game);
 //utils:
-int	init_map(t_game *game, char **argv);
+int		init_map(t_game *game, char **argv);
 void	printf_map_terminal(t_game *game);
 void	free_all(t_game *game, int x);
 int		check_perror(int fd);
@@ -190,6 +190,7 @@ void	if_is_finish(t_game *game);
 int		can_get_items(t_game *game);
 void	can_i_finish(t_game *game, int i, int j);
 int		verif_finish(t_game *game);
+int		verif_ber(char **argv);
 //texture:
 void	set_floor(t_game *game);
 void	anim_bot(t_game *game);

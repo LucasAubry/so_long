@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:32:05 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/16 19:51:29 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/18 13:43:47 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ int	main(int argc, char **argv)
 	{
 		mlx = mlx_init(1500, 1000, "so_long", true);
 		game = malloc(sizeof(t_game));
-		if (!game || init_setting(game, mlx))
+		if (!game || init_setting(game, mlx) || !verif_ber(argv))
 			return (1);
 		if (!init_map(game, argv) || !verif_map(game))
 		{
 			free_all(game, 1);
 			free(game);
-			return (1);
+			return (1); 
 		}
 		if (!set_texture(game, mlx))
 		{

@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:32:07 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/16 19:47:27 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/18 15:59:18 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,35 +48,47 @@ int	map_in_tab(t_game *game, char **argv)
 
 int	verif_ber(char **argv)
 {
-	char *dot;
+	int	i;
+	int point;
 
-	dot = ft_strrchr(argv[1], '.');
-	if (!ft_strcmp(dot, ".ber"))
-		return (1);
-	return (0);
+	i = 0;
+	point = 0;
+	if (ft_strncmp(argv[1] + (ft_strlen(argv[1]) - 4), ".ber", 4) != 0)
+	{
+		printf("Le fichier n'a pas etais trouver ou c'est pas un .ber idiot\n");
+		return (0);
+	}
+	while (argv[1][i])
+	{
+		if (argv[1][i] == '.')
+			point++;
+		i++;
+	}
+	if (point > 1)
+	{
+		ft_printf("le nom du fichier n'est pas correcte\n");
+		return (0);
+	}
+	return (1);
 }
 
 int	init_map(t_game *game, char **argv)
 {
 	int	fd;
 
-	fd = 0;
-	if (!verif_ber(argv))
-	{
-		printf("le fichier n'est pas en .ber idiot\n");
-		return (0);
-	}
-	set_size_y(game, argv);
-	game->map = malloc(sizeof(char *) * (game->size_y + 1));
 	fd = open(argv[1], O_RDONLY);
-	if (!check_perror(fd))
-		return (0);
-	if (!map_in_tab(game, argv))
 	{
+		set_size_y(game, argv);
+		game->map = malloc(sizeof(char *) * (game->size_y + 1));
+		if (!check_perror(fd))
+			return (0);
+		if (!map_in_tab(game, argv))
+		{
+			close(fd);
+			return (0);
+		}
+		set_size_x(game, argv);
 		close(fd);
-		return (0);
+		return (1);
 	}
-	set_size_x(game, argv);
-	close(fd);
-	return (1);
 }
