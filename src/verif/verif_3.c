@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 17:04:40 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/18 17:05:09 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/19 18:36:54 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	character(t_game *game, int i, int j, int boule)
 {
 	if (boule == 1)
 	{
-		if (game->c_vide == 1 && game->c_wall == 1 && game->c_item == 1
+		if (game->c_wall == 1 && game->c_item == 1
 			&& game->c_exit == 1 && game->c_player == 1)
 			return (1);
 		else

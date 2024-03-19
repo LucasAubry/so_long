@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:17:33 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/18 18:15:54 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/19 16:32:07 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ void	init_data_befor_map(t_game *game);
 void	where_is_exit(t_game *game);
 void	where_is_character(t_game *game);
 //utils:
-int		init_map(t_game *game, char **argv);
+int		init_map(t_game *game, char **argv, int x);
 void	printf_map_terminal(t_game *game);
 void	free_all(t_game *game, int x);
 int		check_perror(int fd);

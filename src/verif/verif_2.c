@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:03:12 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/18 17:05:03 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/19 15:36:12 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	wall_up_down(t_game *game)
 	int	j;
 
 	j = 0;
+	if (game->map[0] == NULL)
+		return (0);
 	while (game->map[0][j])
 	{
 		if (game->map[0][j] != '1')

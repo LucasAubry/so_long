@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 16:15:59 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/18 16:16:50 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/19 15:30:37 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	set_size_x(t_game *game, char **argv)
 	if (!check_perror(fd))
 		return ;
 	game->size_x = 0;
+	if (game->map[0] == NULL)
+		return ;
 	while (game->map[0][j] && game->map[0][j] != '\n')
 		j++;
 	game->size_x = j;

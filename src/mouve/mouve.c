@@ -6,7 +6,7 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 18:20:02 by Laubry            #+#    #+#             */
-/*   Updated: 2024/03/18 18:10:35 by Laubry           ###   ########.fr       */
+/*   Updated: 2024/03/19 17:29:04 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_up(t_game *game, int x, int y, char z)
 		str = ft_itoa(game->mouve);
 		if (game->string)
 			mlx_delete_image(game->mlx, game->string);
-		game->string = mlx_put_string(game->mlx, str, 1300, 500);
+		game->string = mlx_put_string(game->mlx, str, 10, 50);
 		free(str);
 		ft_printf("%d\n", game->mouve);
 		return (1);
@@ -55,7 +55,7 @@ int	ft_down(t_game *game, int x, int y, char z)
 		str = ft_itoa(game->mouve);
 		if (game->string)
 			mlx_delete_image(game->mlx, game->string);
-		game->string = mlx_put_string(game->mlx, str, 1300, 500);
+		game->string = mlx_put_string(game->mlx, str, 10, 50);
 		free(str);
 		ft_printf("%d\n", game->mouve);
 		return (1);
@@ -80,7 +80,7 @@ int	ft_left(t_game *game, int x, int y, char z)
 		str = ft_itoa(game->mouve);
 		if (game->string)
 			mlx_delete_image(game->mlx, game->string);
-		game->string = mlx_put_string(game->mlx, str, 1300, 500);
+		game->string = mlx_put_string(game->mlx, str, 10, 50);
 		free(str);
 		ft_printf("%d\n", game->mouve);
 		return (1);
@@ -105,7 +105,7 @@ int	ft_right(t_game *game, int x, int y, char z)
 		str = ft_itoa(game->mouve);
 		if (game->string)
 			mlx_delete_image(game->mlx, game->string);
-		game->string = mlx_put_string(game->mlx, str, 1300, 500);
+		game->string = mlx_put_string(game->mlx, str, 10, 50);
 		free(str);
 		ft_printf("%d\n", game->mouve);
 		return (1);
